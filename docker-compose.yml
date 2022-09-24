@@ -1,0 +1,73 @@
+version: '3'
+services:
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./docker/backend/Dockerfile
+    expose:
+      - 9000
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www/backend
+    volumes:
+      - ./backend:/var/www/backend/
+      - ./docker/backend/php.ini:/usr/local/etc/php/php.ini
+    depends_on:
+      - db
+    networks:
+      - network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./docker/frontend/Dockerfile
+    expose:
+      - 8080
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www/frontend
+    volumes:
+      - ./frontend:/var/www/frontend/
+    networks:
+      - network
+
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+    volumes:
+      - ./backend:/var/www/backend/
+      - ./frontend:/var/www/frontend/
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/ 
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - network
+
+  db:
+    image: mysql:5.7.22
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci','--default-authentication-plugin=mysql_native_password']
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - dbdata:/var/lib/mysql 
+      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf 
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local

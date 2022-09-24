@@ -1,0 +1,109 @@
+:root {
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+body {
+    background-color: #c6c8cde6;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+}
+
+button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 4px;
+    margin: 0 3px;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #ff8300;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+
+.todos {
+    display: flex;
+    justify-content: space-around;
+    padding: 0%;
+}
+
+ul {
+    list-style: none;
+    padding: 1em;
+}
+
+li {
+    margin-block: 0.5em;
+    padding: 1em;
+    font-weight: bold;
+}
+
+li.resolved {
+    text-decoration: line-through;
+}
+
+li:before {
+    content: "— ";
+    float: left;
+    width: 30px;
+    margin-left: -30px;
+    color: #a1a1a1;
+}
+
+li span {
+    font-size: 16px;
+}
+
+li button {
+    font-size: 14px;
+}
+
+.common {
+    background-color: white;
+    border: 1px solid lightgray;
+    padding: 1em 2em;
+    min-width: 300px;
+}
+
+.urgent {
+    background-color: white;
+    border: 1px solid lightgray;
+    padding: 1em 2em;
+    min-width: 300px;
+}
+
+.empty-list {
+    text-align: center;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+#app {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.todo input {
+    background-color: white;
+    min-width: 50%;
+    padding: 5px;
+    margin-left: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.over-count {
+    color: red;
+}
