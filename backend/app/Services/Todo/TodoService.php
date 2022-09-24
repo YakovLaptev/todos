@@ -106,6 +106,7 @@ class TodoService
         }
 
         $todo->save();
+        $todo->load('list');
 
         return $todo;
     }

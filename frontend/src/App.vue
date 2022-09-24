@@ -34,7 +34,7 @@
 
     const doneOrUndone = (result, todo) => {
         if(result.data.status === true) {
-            todo.isResolved = result.data.isResolved;
+            todo.isResolved = result.data.data.isResolved;
         }
     };
 
