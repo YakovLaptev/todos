@@ -137,12 +137,3 @@
         </div>
     </div>
 </template>
-
-<style scoped>
-    * {
-        margin: 10;
-        padding: 2;
-        box-sizing: border-box;
-    }
-</style>
-    

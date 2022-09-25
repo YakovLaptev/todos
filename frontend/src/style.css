@@ -12,6 +12,13 @@ body {
     min-height: 100vh;
 }
 
+#app {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
 h1 {
     font-size: 3.2em;
     line-height: 1.1;
@@ -38,13 +45,16 @@ button {
 
 ul {
     list-style: none;
-    padding: 1em;
+    padding: 0 20px;
 }
 
 li {
-    margin-block: 0.5em;
-    padding: 1em;
+    margin: 0;
+    padding: 10px;
     font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 li.resolved {
@@ -63,8 +73,14 @@ li span {
     font-size: 16px;
 }
 
+li .buttons {
+    display: flex;
+    flex-direction: row;
+}
+
 li button {
     font-size: 14px;
+    float: right;
 }
 
 .common {
@@ -87,13 +103,6 @@ li button {
     opacity: 0.8;
 }
 
-#app {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-}
-
 .todo input {
     background-color: white;
     min-width: 50%;
@@ -107,3 +116,4 @@ li button {
 .over-count {
     color: red;
 }
+
